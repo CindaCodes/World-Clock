@@ -36,42 +36,43 @@ select {
   font-weight: 400;
   margin: 0 auto;
   margin: 40px auto;
-  max-width: 800px;
+  max-width: 700px;
   opacity: 95%;
   padding: 20px;
 }
 
-.flex-cities {
-  display: flex;
-  justify-content: space-between;
-  margin: auto 0 15px 0;
-  padding: 0;
-}
-
-.city-container {
-  background-color: #f7aa00;
-  border-radius: 10px;
+.local-time {
   color: #235784;
-  margin: 10px 10px;
-  padding: 10px;
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px 0;
   text-align: center;
 }
 
-.city {
-  font-size: 30px;
-  margin: 0;
+.local {
+    color: #235784;
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 35px;
 }
 
-.flag {
-  font-size: 75px;
-  padding-top: 10px;
-  text-shadow: 0 0 1em #235784, 0 0 0.2em #235784;
-  line-height: 70px;
+.here {
+  color: #235784;
+  display: block;
+  margin: 0 0 10px 0;
+  padding: 0;
+  text-align: center;
+  font-size: 30px;
 }
-.date {
-  font-size: 20px;
-  opacity: 0.7;
-  padding-bottom: 10px;
+
+.local-date {
+    color: #235784;
+    display: block;
+    margin: 10px auto;
+    padding: 10px 0;
+    text-align: center;
 }
 
 /* Clock */
@@ -80,16 +81,17 @@ select {
   background-color: #40a8c4;
   border-radius: 50%;
   display: flex;
-  height: 150px;
+  height: 200px;
   justify-content: center;
   margin: 0 auto;
   position: relative;
   text-align: center;
-  width: 150px;
+  width: 200px;
+
 }
 
 .number {
-  font-size: 20px;
+  font-size: 17px;
   inset: 5px;
   position: absolute;
   text-align: center;
@@ -104,9 +106,9 @@ select {
 .center-dot {
   background-color: #bcdbdf;
   border-radius: 50%;
-  height: 10px;
+  height: 7px;
   position: absolute;
-  width: 10px;
+  width: 7px;
 }
 
 .hour-hand,
@@ -122,22 +124,66 @@ select {
 
 .hour-hand {
   background-color: #235784;
-  height: 50px;
+  height: 55px;
   width: 4px;
 }
 .minute-hand {
   background-color: #bcdbdf;
-  height: 65px;
+  height: 80px;
   width: 2px;
 }
 .second-hand {
   background-color: #f7aa00;
-  height: 75px;
+  height: 90px;
   width: 1px;
 }
 
+
+
+.flex-cities {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  max-height: 420px;
+}
+
+.city-list{
+    height: fit-content;
+}
+.city-container {
+  background-color: #f7aa00;
+  border-radius: 10px;
+  color: #235784;
+  margin: 10px 10px;
+  padding: 10px 10px 0 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+
+.city {
+  font-size: 25px;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.flag {
+  font-size: 60px;
+  padding-top: 10px;
+  text-shadow: 0 0 1em #235784, 0 0 0.2em #235784;
+  line-height: 70px;
+}
+.date, .local-date {
+  font-size: 20px;
+  opacity: 0.7;
+  padding-bottom: 10px;
+}
+
 /* Time */
-.time {
+.time, .local-time {
   font-size: 35px;
   font-weight: bold;
 }
@@ -148,68 +194,6 @@ select {
   vertical-align: middle;
 }
 
-/*Toggle*/
-.time-format-toggle {
-  background-color: #40a8c4;
-  border-radius: 30px;
-  border: 1px solid #f7aa00;
-  box-shadow: inset 0px -1px 5px #f7aa00;
-  color: #235784;
-  display: flex;
-  font-size: 20px;
-  justify-content: space-between;
-  line-height: 1.5;
-  margin: 20px auto;
-  padding: 2px 10px;
-  position: relative;
-  width: 150px;
-}
-
-.time-format-toggle input {
-  appearance: none;
-  border-radius: 30px;
-  cursor: pointer;
-  height: 100%;
-  inset: 0;
-  position: absolute;
-  width: 100%;
-}
-
-.time-format-toggle input:focus-visible {
-  margin: 0px auto;
-}
-
-.time-format-text {
-  padding: 4px 0px;
-  user-select: none;
-}
-
-.time-format-button {
-  border-radius: 30px;
-  box-shadow: inset 0px -1px 5px #f7aa00;
-  height: 32px;
-  pointer-events: none;
-  position: relative;
-  width: 55px;
-}
-
-.time-format-button::after {
-  background-color: #f7aa00;
-  border-radius: 30px;
-  box-shadow: 0px 1px 2px #f7aa00;
-  content: "";
-  height: 25px;
-  left: 4px;
-  position: absolute;
-  top: 50%;
-  transform: translate3d(0, -50%, 0);
-  transition: 200ms cubic-bezier(0.96, -0.11, 0, 1.12);
-  width: 25px;
-}
-
-.time-format-toggle input:checked ~ .time-format-button::after {
-  transform: translate3d(22px, -50%, 0);
-}
 
 /* Footer */
 

@@ -10,6 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=Iceland&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.46/moment-timezone-with-data-1970-2030.min.js"></script>
+
     <title>World Clock - Jacinda Bietz</title>
   </head>
   <body>
@@ -21,16 +24,16 @@
 
       <select>
         <option value="">Select a city..</option>
+        <option value="current">My current location</option>
         <option value="">London</option>
         <option value="">New York</option>
         <option value="">Oslo</option>
       </select>
 
-      <div class="flex-cities">
-       <div class="city-container">
-          <h2 class="city">Hawaii</h2>
-          <div class="flag">🇺🇸</div>
-          <div class="date">August 15th 2022</div>
+      <div class="flex-cities" id="cities">
+        <div class="local-time" id="local-time">
+          <h2 class="local">Local Time</h2>
+          <p class="here" id="here">here</p>
           <div class="clock">
             <div class="number" style="--n: 1"><b>1</b></div>
             <div class="number" style="--n: 2"><b>2</b></div>
@@ -49,88 +52,43 @@
             <div class="second-hand" id="second-hand"></div>
             <div class="center-dot"></div>
           </div>
-          <div class="time">1:48:15 <small> AM </small></div>
+          <div class="local-date">January 14th 2025</div>
+          <div class="local-time">10:15:34</div>
         </div>
-        <div class="city-container">
-          <h2 class="city">Caracas</h2>
-          <div class="flag">🇻🇪</div>
-          <div class="date">August 15th 2022</div>
-          <div class="clock">
-            <div class="number" style="--n: 1"><b>1</b></div>
-            <div class="number" style="--n: 2"><b>2</b></div>
-            <div class="number" style="--n: 3"><b>3</b></div>
-            <div class="number" style="--n: 4"><b>4</b></div>
-            <div class="number" style="--n: 5"><b>5</b></div>
-            <div class="number" style="--n: 6"><b>6</b></div>
-            <div class="number" style="--n: 7"><b>7</b></div>
-            <div class="number" style="--n: 8"><b>8</b></div>
-            <div class="number" style="--n: 9"><b>9</b></div>
-            <div class="number" style="--n: 10"><b>10</b></div>
-            <div class="number" style="--n: 11"><b>11</b></div>
-            <div class="number" style="--n: 12"><b>12</b></div>
-            <div class="hour-hand" id="hour-hand"></div>
-            <div class="minute-hand" id="minute-hand"></div>
-            <div class="second-hand" id="second-hand"></div>
-            <div class="center-dot"></div>
+        <div class="city-list">
+          <div class="city-container" id="honolulu">
+            <h2 class="city">Honolulu</h2>
+            <div class="flag">🇺🇸</div>
+            <div class="stack">
+              <div class="date"></div>
+              <div class="time"></div>
+            </div>
           </div>
-          <div class="time">1:48:15 <small> AM </small></div>
-        </div>
-       <div class="city-container">
-          <h2 class="city">Cairo</h2>
-          <div class="flag">🇪🇬</div>
-          <div class="date">August 15th 2022</div>
-          <div class="clock">
-            <div class="number" style="--n: 1"><b>1</b></div>
-            <div class="number" style="--n: 2"><b>2</b></div>
-            <div class="number" style="--n: 3"><b>3</b></div>
-            <div class="number" style="--n: 4"><b>4</b></div>
-            <div class="number" style="--n: 5"><b>5</b></div>
-            <div class="number" style="--n: 6"><b>6</b></div>
-            <div class="number" style="--n: 7"><b>7</b></div>
-            <div class="number" style="--n: 8"><b>8</b></div>
-            <div class="number" style="--n: 9"><b>9</b></div>
-            <div class="number" style="--n: 10"><b>10</b></div>
-            <div class="number" style="--n: 11"><b>11</b></div>
-            <div class="number" style="--n: 12"><b>12</b></div>
-            <div class="hour-hand" id="hour-hand"></div>
-            <div class="minute-hand" id="minute-hand"></div>
-            <div class="second-hand" id="second-hand"></div>
-            <div class="center-dot"></div>
+          <div class="city-container" id="caracas">
+            <h2 class="city">Caracas</h2>
+            <div class="flag">🇻🇪</div>
+            <div class="stack">
+              <div class="date"></div>
+              <div class="time"></div>
+            </div>
           </div>
-          <div class="time">1:48:15 <small> AM </small></div>
-        </div>
-        <div class="city-container">
-          <h2 class="city">Hong Kong</h2>
-          <div class="flag">🇭🇰</div>
-          <div class="date">August 15th 2022</div>
-          <div class="clock">
-            <div class="number" style="--n: 1"><b>1</b></div>
-            <div class="number" style="--n: 2"><b>2</b></div>
-            <div class="number" style="--n: 3"><b>3</b></div>
-            <div class="number" style="--n: 4"><b>4</b></div>
-            <div class="number" style="--n: 5"><b>5</b></div>
-            <div class="number" style="--n: 6"><b>6</b></div>
-            <div class="number" style="--n: 7"><b>7</b></div>
-            <div class="number" style="--n: 8"><b>8</b></div>
-            <div class="number" style="--n: 9"><b>9</b></div>
-            <div class="number" style="--n: 10"><b>10</b></div>
-            <div class="number" style="--n: 11"><b>11</b></div>
-            <div class="number" style="--n: 12"><b>12</b></div>
-            <div class="hour-hand" id="hour-hand"></div>
-            <div class="minute-hand" id="minute-hand"></div>
-            <div class="second-hand" id="second-hand"></div>
-            <div class="center-dot"></div>
+          <div class="city-container" id="cairo">
+            <h2 class="city">Cairo</h2>
+            <div class="flag">🇪🇬</div>
+            <div class="stack">
+              <div class="date"></div>
+              <div class="time"></div>
+            </div>
           </div>
-          <div class="time">1:48:15 <small> AM </small></div>
+          <div class="city-container" id="hong-kong">
+            <h2 class="city">Hong Kong</h2>
+            <div class="flag">🇭🇰</div>
+            <div class="stack">
+              <div class="date"></div>
+              <div class="time"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="time-format-toggle-container">
-        <label for="myCheckbox" class="time-format-toggle">
-          <span class="time-format-text">24 hr</span>
-          <input type="checkbox" id="myCheckbox" />
-          <span class="time-format-button"></span>
-          <span class="time-format-text">12 hr</span>
-        </label>
       </div>
 
       <footer>
