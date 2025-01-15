@@ -50,12 +50,12 @@ select {
 }
 
 .local {
-    color: #235784;
-    display: block;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-size: 35px;
+  color: #235784;
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 35px;
 }
 
 .here {
@@ -68,11 +68,11 @@ select {
 }
 
 .local-date {
-    color: #235784;
-    display: block;
-    margin: 10px auto;
-    padding: 10px 0;
-    text-align: center;
+  color: #235784;
+  display: block;
+  margin: 10px auto;
+  padding: 10px 0;
+  text-align: center;
 }
 
 /* Clock */
@@ -87,7 +87,6 @@ select {
   position: relative;
   text-align: center;
   width: 200px;
-
 }
 
 .number {
@@ -138,8 +137,6 @@ select {
   width: 1px;
 }
 
-
-
 .flex-cities {
   display: flex;
   justify-content: space-between;
@@ -148,8 +145,8 @@ select {
   max-height: 420px;
 }
 
-.city-list{
-    height: fit-content;
+.city-list {
+  height: fit-content;
 }
 .city-container {
   background-color: #f7aa00;
@@ -157,17 +154,19 @@ select {
   color: #235784;
   margin: 10px 10px;
   padding: 10px 10px 0 10px;
-  text-align: center;
   display: flex;
   justify-content: space-between;
   width: 400px;
 }
 
-
 .city {
-  font-size: 25px;
+  font-size: 30px;
   margin: 0;
-  padding: 20px 0;
+  padding: 7px 0;
+}
+
+.time-zone {
+  text-align: left;
 }
 
 .flag {
@@ -176,14 +175,20 @@ select {
   text-shadow: 0 0 1em #235784, 0 0 0.2em #235784;
   line-height: 70px;
 }
-.date, .local-date {
+.date,
+.time {
+  text-align: right;
+}
+.date,
+.local-date {
   font-size: 20px;
   opacity: 0.7;
   padding-bottom: 10px;
 }
 
 /* Time */
-.time, .local-time {
+.time,
+.local-time {
   font-size: 35px;
   font-weight: bold;
 }
@@ -193,7 +198,6 @@ select {
   line-height: 48px;
   vertical-align: middle;
 }
-
 
 /* Footer */
 

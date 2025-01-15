@@ -17,9 +17,7 @@ function rotateClockHand(element, rotation) {
 }
 setInterval(clockTick, 1000);
 
-
 function updateTime() {
-
   // Hawaii Time
   let honoluluElement = document.querySelector("#honolulu");
   if (honoluluElement) {
@@ -67,3 +65,30 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
+
+
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  if(cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+    }
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#honolulu");
+  citiesElement.innerHTML = `
+    <div class="stack">
+    <h2 class="city">${cityName}</h2>
+    </div>
+    <div class="stack">
+    <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+    <div class="time">${cityTime.format("H:mm:ss")}</div>
+    </div>
+    `;
+}
+
+
+
+let citiesSelectElement = document.querySelector("#city-select");
+
+citiesSelectElement.addEventListener("change", updateCity);
