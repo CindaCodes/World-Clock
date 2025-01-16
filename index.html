@@ -22,40 +22,52 @@
     <div class="container">
       <h1>World Clock</h1>
 
-      <select id="city-select">
+      <select id="city-selector">
         <option value="">Select a city..</option>
-        <option value="Pacific/Auckland">
-          GMT+12:00 Auckland, New Zealand
-        </option>
-        <option value="Pacific/Noumea">GMT+11:00 Noumea, New Caledonia</option>
-        <option value="Australia/Sydney">GMT+10:00 Sydney, Australia</option>
-        <option value="Asia/Tokyo">GMT+9:00 Tokyo, Japan</option>
-        <option value="Asia/Bangkok">GMT+7:00 Bangkok, Thailand</option>
-        <option value="Asia/Dhaka">GMT+6:00 Dhaka, Bangladesh</option>
-        <option value="Asia/Karachi">GMT+5:00 Karachi, Pakistan</option>
-        <option value="Asia/Dubai">GMT+4:00 Dubai, UAE</option>
-        <option value="Europe/Moscow">GMT+3:00 Moscow, Russia</option>
-        <option value="Europe/Paris">GMT+1:00 Paris, France</option>
-        <option value="Europe/London">GMT+0:00 London, England</option>
-        <option value="Atlantic/Azores">GMT-1:00 Azores, Portugal</option>
-        <option value="Atlantic/South_Georgia">
-          GMT-2:00 South Georgia, British Territory
-        </option>
-        <option value="Etc/GMT-3">GMT-3:00 Rio De Janeiro, Brazil</option>
-        <option value="America/New_York">GMT-5:00 New York, USA</option>
-        <option value="America/Mexico_City">
-          GMT-6:00 Mexico City, Mexico
-        </option>
-        <option value="America/Denver">GMT-7:00 Denver, USA</option>
-        <option value="America/Los_Angeles">GMT-8:00 Los Angeles, USA</option>
-        <option value="America/Anchorage">GMT-9:00 Anchorage, USA</option>
-        <option value="Pacific/Midway">GMT-11:00 Midway, USA</option>
+        <option value="current">My current location</option>
+          <optgroup label="Africa">
+          <option value="Africa/Cairo">Cairo</option>
+          <option value="Africa/Johannesburg">Johannesburg</option>
+          <option value="Africa/Maputo">Maputo</option>
+          <option value="Africa/Nairobi">Nairobi</option>
+          <option value="Africa/Timbuktu">Timbuktu</option>
+        </optgroup>
+        <optgroup label="America">
+          <option value="America/Barbados">Barbados</option>
+          <option value="America/Bogota">Bogota</option>
+          <option value="America/Denver">Denver</option>
+          <option value="America/Los_Angeles">Los Angeles</option>
+          <option value="America/Mexico_City">Mexico City</option>
+          <option value="America/New_York">New York</option>
+        </optgroup>
+        <optgroup label="Asia">
+          <option value="Asia/Bangkok">Bangkok</option>
+          <option value="Asia/Jerusalem">Jerusalem</option>
+          <option value="Asia/Kabul">Kabul</option>
+          <option value="Asia/Kuwait">Kuwait</option>
+          <option value="Asia/Manila">Manila</option>
+          <option value="Asia/Tokyo">Tokyo</option>
+        </optgroup>
+        <optgroup label="Australia">
+          <option value="Australia/Brisbane">Brisbane</option>
+          <option value="Australia/Canberra">Canberra</option>
+          <option value="Australia/Melbourne">Melbourne</option>
+          <option value="Australia/Queensland">Queensland</option>
+          <option value="Australia/Sydney">Sydney</option>
+        </optgroup>
+         <optgroup label="Europe">
+          <option value="Europe/Athens">Athens</option>
+          <option value="Europe/Istanbul'">Istanbul</option>
+          <option value="Europe/Kiev">Kiev</option>
+          <option value="Europe/Oslo">Oslo</option>
+          <option value="Europe/Paris">Paris</option>
+          <option value="Europe/Stockholm">Stockholm</option>
+        </optgroup>
       </select>
 
-      <div class="flex-cities" id="cities">
-        <div class="local-time" id="local-time">
-          <h2 class="local">Local Time</h2>
-          <p class="here" id="here">here</p>
+      <div class="flex-container">
+        <div class="local-time-box" id="local-time">
+          <h2 class="local">Local Time</h2> 
           <div class="clock">
             <div class="number" style="--n: 1"><b>1</b></div>
             <div class="number" style="--n: 2"><b>2</b></div>
@@ -74,27 +86,22 @@
             <div class="second-hand" id="second-hand"></div>
             <div class="center-dot"></div>
           </div>
-          <div class="local-date">January 14th 2025</div>
-          <div class="local-time">10:15:34</div>
         </div>
-        <div class="city-list">
+
+        <div class="city-list" id="cities">
           <div class="city-container" id="honolulu">
             <div class="stack">
               <h2 class="city">Honolulu</h2>
-              <div class="time-zone">GMT-10:00</div>
             </div>
-            <div class="flag">🇺🇸</div>
             <div class="stack">
               <div class="date"></div>
-              <div class="time"></div>
+              <div class="time">=</div>
             </div>
           </div>
           <div class="city-container" id="caracas">
             <div class="stack">
               <h2 class="city">Caracas</h2>
-              <div class="time-zone">GMT-4:00</div>
             </div>
-            <div class="flag">🇻🇪</div>
             <div class="stack">
               <div class="date"></div>
               <div class="time"></div>
@@ -103,25 +110,14 @@
           <div class="city-container" id="cairo">
             <div class="stack">
               <h2 class="city">Cairo</h2>
-              <div class="time-zone">GMT+2:00</div>
             </div>
-            <div class="flag">🇪🇬</div>
             <div class="stack">
               <div class="date"></div>
               <div class="time"></div>
             </div>
           </div>
-          <div class="city-container" id="hong-kong">
-            <div class="stack">
-              <h2 class="city">Hong Kong</h2>
-              <div class="time-zone">GMT+8:00</div>
-            </div>
-            <div class="flag">🇭🇰</div>
-            <div class="stack">
-              <div class="date"></div>
-              <div class="time"></div>
-            </div>
-          </div>
+        
+          
         </div>
       </div>
 

@@ -20,11 +20,16 @@ h1 {
 select {
   background-color: #40a8c4;
   border-radius: 4px;
+  border: 2px solid #f7aa00;
   display: block;
   font-size: 18px;
-  margin: 0 auto 20px auto;
+  margin: 0 10px;
   padding: 10px 0;
-  width: 95%;
+  width: 96.5%;
+}
+
+optgroup {
+  color: #f7aa00;
 }
 
 .container {
@@ -36,57 +41,48 @@ select {
   font-weight: 400;
   margin: 0 auto;
   margin: 40px auto;
-  max-width: 700px;
+  max-width: 650px;
   opacity: 95%;
   padding: 20px;
+  align-items: center;
 }
 
-.local-time {
+.local-time-box {
+  background-color: #f7aa00;
+  border-radius: 10px;
   color: #235784;
-  display: block;
-  margin: 0 auto 20px auto;
-  padding: 10px 0;
   text-align: center;
+  padding: 0 10px;
+  max-height: 300px;
+  margin: 14px 0 0 10px;
 }
 
 .local {
   color: #235784;
   display: block;
-  margin: 0;
   padding: 0;
+  margin: 15px 0;
   text-align: center;
   font-size: 35px;
-}
-
-.here {
-  color: #235784;
-  display: block;
-  margin: 0 0 10px 0;
-  padding: 0;
-  text-align: center;
-  font-size: 30px;
-}
-
-.local-date {
-  color: #235784;
-  display: block;
-  margin: 10px auto;
-  padding: 10px 0;
-  text-align: center;
 }
 
 /* Clock */
 .clock {
   align-items: center;
-  background-color: #40a8c4;
+  background: radial-gradient(
+    circle,
+    rgba(64, 168, 196, 1) 0%,
+    rgba(35, 87, 132, 1) 100%
+  );
   border-radius: 50%;
   display: flex;
   height: 200px;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto 15px auto;
   position: relative;
   text-align: center;
   width: 200px;
+  box-shadow: 0 0 20px #bcdbdf, 0 0 20px #bcdbdf;
 }
 
 .number {
@@ -94,6 +90,7 @@ select {
   inset: 5px;
   position: absolute;
   text-align: center;
+  color: #f7aa00;
   transform: rotate(calc(30deg * var(--n)));
 }
 
@@ -137,7 +134,7 @@ select {
   width: 1px;
 }
 
-.flex-cities {
+.flex-container {
   display: flex;
   justify-content: space-between;
   margin: 0;
@@ -145,42 +142,32 @@ select {
   max-height: 420px;
 }
 
-.city-list {
-  height: fit-content;
-}
 .city-container {
   background-color: #f7aa00;
   border-radius: 10px;
   color: #235784;
-  margin: 10px 10px;
+  margin: 14px 14px 0 0;
   padding: 10px 10px 0 10px;
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  width: 370px;
 }
 
 .city {
   font-size: 30px;
   margin: 0;
-  padding: 7px 0;
+  padding: 15px 0;
 }
 
 .time-zone {
   text-align: left;
 }
 
-.flag {
-  font-size: 60px;
-  padding-top: 10px;
-  text-shadow: 0 0 1em #235784, 0 0 0.2em #235784;
-  line-height: 70px;
-}
 .date,
 .time {
   text-align: right;
 }
-.date,
-.local-date {
+.date {
   font-size: 20px;
   opacity: 0.7;
   padding-bottom: 10px;
@@ -189,7 +176,7 @@ select {
 /* Time */
 .time,
 .local-time {
-  font-size: 35px;
+  font-size: 48px;
   font-weight: bold;
 }
 
@@ -199,11 +186,32 @@ select {
   vertical-align: middle;
 }
 
+button {
+  display: block;
+  font-size: 20px;
+  margin: 75px auto;
+  padding: 10px 20px;
+  background-color: #40a8c4;
+  box-shadow: 0 0 20px #f7aa00, 0 0 20px #f7aa00;
+  border-radius: 8px;
+  color: #235784;
+  cursor: pointer;
+  border: none;
+  font-family: "Iceland";
+  font-weight: bolder;
+}
+button:hover {
+  background-color: #235784;
+  color: #f7aa00;
+  font-size: 22px;
+}
 /* Footer */
 
 footer {
   color: #40a8c4;
   text-align: center;
+  margin: 10px 0 0 0;
+  font-size: 15px;
 }
 
 a:-webkit-any-link {
@@ -215,5 +223,5 @@ a:-webkit-any-link {
 
 a:-webkit-any-link:hover {
   color: #235784;
-  font-size: 23px;
+  font-size: 17px;
 }

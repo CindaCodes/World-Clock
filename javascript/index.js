@@ -15,80 +15,83 @@ function clockTick() {
 function rotateClockHand(element, rotation) {
   element.style.setProperty(`--rotate`, rotation * 360);
 }
-setInterval(clockTick, 1000);
 
 function updateTime() {
   // Hawaii Time
   let honoluluElement = document.querySelector("#honolulu");
-  if (honoluluElement) {
-    let honoluluDateElement = honoluluElement.querySelector(".date");
-    let honoluluTimeElement = honoluluElement.querySelector(".time");
-    let honoluluTime = moment().tz("Pacific/Honolulu");
+  let honoluluDateElement = honoluluElement.querySelector(".date");
+  let honoluluTimeElement = honoluluElement.querySelector(".time");
+  let honoluluTime = moment().tz("Pacific/Honolulu");
 
-    honoluluDateElement.innerHTML = honoluluTime.format("MMMM   Do YYYY");
-    honoluluTimeElement.innerHTML = honoluluTime.format("H:mm:ss");
-  }
+  honoluluDateElement.innerHTML = honoluluTime.format("MMMM   Do YYYY");
+  honoluluTimeElement.innerHTML = honoluluTime.format("HH:mm:ss");
 
   // Caracas Time
   let caracasElement = document.querySelector("#caracas");
-  if (caracasElement) {
-    let caracasDateElement = caracasElement.querySelector(".date");
-    let caracasTimeElement = caracasElement.querySelector(".time");
-    let caracasTime = moment().tz("America/Caracas");
+  let caracasDateElement = caracasElement.querySelector(".date");
+  let caracasTimeElement = caracasElement.querySelector(".time");
+  let caracasTime = moment().tz("America/Caracas");
 
-    caracasDateElement.innerHTML = caracasTime.format("MMMM Do YYYY");
-    caracasTimeElement.innerHTML = caracasTime.format("H:mm:ss");
-  }
+  caracasDateElement.innerHTML = caracasTime.format("MMMM Do YYYY");
+  caracasTimeElement.innerHTML = caracasTime.format("HH:mm:ss");
 
   // Cairo Time
   let cairoElement = document.querySelector("#cairo");
-  if (cairoElement) {
-    let cairoDateElement = cairoElement.querySelector(".date");
-    let cairoTimeElement = cairoElement.querySelector(".time");
-    let cairoTime = moment().tz("Africa/Cairo");
+  let cairoDateElement = cairoElement.querySelector(".date");
+  let cairoTimeElement = cairoElement.querySelector(".time");
+  let cairoTime = moment().tz("Africa/Cairo");
 
-    cairoDateElement.innerHTML = cairoTime.format("MMMM   Do YYYY");
-    cairoTimeElement.innerHTML = cairoTime.format("H:mm:ss");
-  }
-
-  // Hong Kong Time
-  let hongKongElement = document.querySelector("#hong-kong");
-  if (hongKongElement) {
-    let hongKongDateElement = hongKongElement.querySelector(".date");
-    let hongKongTimeElement = hongKongElement.querySelector(".time");
-    let hongKongTime = moment().tz("Asia/Hong_Kong");
-
-    hongKongDateElement.innerHTML = hongKongTime.format("MMMM Do YYYY");
-    hongKongTimeElement.innerHTML = hongKongTime.format("H:mm:ss");
-  }
+  cairoDateElement.innerHTML = cairoTime.format("MMMM   Do YYYY");
+  cairoTimeElement.innerHTML = cairoTime.format("HH:mm:ss");
 }
-
-updateTime();
-setInterval(updateTime, 1000);
-
-
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
-  if(cityTimeZone === "current") {
-    cityTimeZone = moment.tz.guess();
-    }
-  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
-  let citiesElement = document.querySelector("#honolulu");
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let citiesElement = document.querySelector("#cities");
   citiesElement.innerHTML = `
-    <div class="stack">
-    <h2 class="city">${cityName}</h2>
-    </div>
-    <div class="stack">
-    <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-    <div class="time">${cityTime.format("H:mm:ss")}</div>
+    <div class="city-container">
+      <div class="stack">
+        <h2 class="city">${cityName}</h2>
+      </div>
+      <div class="stack">
+        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+        <div class="time">${cityTime.format("HH:mm:ss")}</div>
     </div>
     `;
 }
 
+let citiesSelectElement = document.querySelector("#city-selector");
+citiesSelectElement.addEventListener("change", function (event) {
+  setInterval(updateCity, 1000);
 
+  function updateCity() {
+    let cityTimeZone = citiesSelectElement.value;
+    if (cityTimeZone === "current") {
+      cityTimeZone = moment.tz.guess();
+    }
+    let cityTime = moment().tz(cityTimeZone);
+    let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+    let citiesElement = document.querySelector("#cities");
+    citiesElement.innerHTML = `
+    <div class="city-container">
+      <div class="stack">
+        <h2 class="city">${cityName}</h2>
+      </div>
+      <div class="stack">
+        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+        <div class="time">${cityTime.format("HH:mm:ss")}</div>
+    </div>
+    </div>
+        
+       <a href="/"><button>Go to Homepage</button></a>
+       
+  `;
+  }
+});
 
-let citiesSelectElement = document.querySelector("#city-select");
+setInterval(clockTick, 1000);
 
-citiesSelectElement.addEventListener("change", updateCity);
+updateTime();
+setInterval(updateTime, 1000);
