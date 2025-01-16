@@ -24,7 +24,7 @@ function updateTime() {
   let honoluluTime = moment().tz("Pacific/Honolulu");
 
   honoluluDateElement.innerHTML = honoluluTime.format("MMMM   Do YYYY");
-  honoluluTimeElement.innerHTML = honoluluTime.format("HH:mm:ss");
+  honoluluTimeElement.innerHTML = honoluluTime.format("H:mm:ss");
 
   // Caracas Time
   let caracasElement = document.querySelector("#caracas");
@@ -45,22 +45,6 @@ function updateTime() {
   cairoTimeElement.innerHTML = cairoTime.format("HH:mm:ss");
 }
 
-function updateCity(event) {
-  let cityTimeZone = event.target.value;
-  let cityTime = moment().tz(cityTimeZone);
-  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
-  let citiesElement = document.querySelector("#cities");
-  citiesElement.innerHTML = `
-    <div class="city-container">
-      <div class="stack">
-        <h2 class="city">${cityName}</h2>
-      </div>
-      <div class="stack">
-        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-        <div class="time">${cityTime.format("HH:mm:ss")}</div>
-    </div>
-    `;
-}
 
 let citiesSelectElement = document.querySelector("#city-selector");
 citiesSelectElement.addEventListener("change", function (event) {
