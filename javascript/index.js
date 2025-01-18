@@ -96,6 +96,23 @@ function updateTime() {
       ? "h:mm:ss [<small>]A[</small>]"
       : "HH:mm:ss"
   );
+
+  // Hong Kong Time
+  let hongKongElement = document.querySelector("#hongKong");
+  let hongKongDateElement = hongKongElement.querySelector(".date");
+  let hongKongTimeElement = hongKongElement.querySelector(".time");
+  let hongKongTime = moment().tz("Asia/Hong_Kong");
+
+  hongKongDateElement.innerHTML = hongKongTime.format("ddd, MMM Do YYYY");
+  hongKongTimeElement.innerHTML = hongKongTime.format(
+    is12HourFormat
+      ? "h:mm:ss [<small>]A[</small>]"
+      : is12HourFormat
+      ? "h:mm:ss [<small>]A[</small>]"
+      : "HH:mm:ss"
+  );
+
+
 }
 
 updateTime();
