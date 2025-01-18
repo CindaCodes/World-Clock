@@ -21,54 +21,60 @@
     </video>
     <div class="container">
       <h1>World Clock</h1>
-
-      <select id="city-selector">
-        <option value="">Select a city..</option>
-        <option value="current">My current location</option>
+      <div class="selection-flex">
+        <select id="city-selector">
+          <option value="">Select a city..</option>
+          <option value="current">My current location</option>
           <optgroup label="Africa">
-          <option value="Africa/Cairo">Cairo</option>
-          <option value="Africa/Johannesburg">Johannesburg</option>
-          <option value="Africa/Maputo">Maputo</option>
-          <option value="Africa/Nairobi">Nairobi</option>
-          <option value="Africa/Timbuktu">Timbuktu</option>
-        </optgroup>
-        <optgroup label="America">
-          <option value="America/Barbados">Barbados</option>
-          <option value="America/Bogota">Bogota</option>
-          <option value="America/Denver">Denver</option>
-          <option value="America/Los_Angeles">Los Angeles</option>
-          <option value="America/Mexico_City">Mexico City</option>
-          <option value="America/New_York">New York</option>
-        </optgroup>
-        <optgroup label="Asia">
-          <option value="Asia/Bangkok">Bangkok</option>
-          <option value="Asia/Jerusalem">Jerusalem</option>
-          <option value="Asia/Kabul">Kabul</option>
-          <option value="Asia/Kuwait">Kuwait</option>
-          <option value="Asia/Manila">Manila</option>
-          <option value="Asia/Tokyo">Tokyo</option>
-        </optgroup>
-        <optgroup label="Australia">
-          <option value="Australia/Brisbane">Brisbane</option>
-          <option value="Australia/Canberra">Canberra</option>
-          <option value="Australia/Melbourne">Melbourne</option>
-          <option value="Australia/Queensland">Queensland</option>
-          <option value="Australia/Sydney">Sydney</option>
-        </optgroup>
-         <optgroup label="Europe">
-          <option value="Europe/Athens">Athens</option>
-          <option value="Europe/Istanbul'">Istanbul</option>
-          <option value="Europe/Kiev">Kiev</option>
-          <option value="Europe/Oslo">Oslo</option>
-          <option value="Europe/Paris">Paris</option>
-          <option value="Europe/Stockholm">Stockholm</option>
-        </optgroup>
-      </select>
+            <option value="Africa/Cairo">Cairo</option>
+            <option value="Africa/Johannesburg">Johannesburg</option>
+            <option value="Africa/Maputo">Maputo</option>
+            <option value="Africa/Nairobi">Nairobi</option>
+            <option value="Africa/Timbuktu">Timbuktu</option>
+          </optgroup>
+          <optgroup label="America">
+            <option value="America/Barbados">Barbados</option>
+            <option value="America/Bogota">Bogota</option>
+            <option value="America/Denver">Denver</option>
+            <option value="America/Los_Angeles">Los Angeles</option>
+            <option value="America/Mexico_City">Mexico City</option>
+            <option value="America/New_York">New York</option>
+          </optgroup>
+          <optgroup label="Asia">
+            <option value="Asia/Bangkok">Bangkok</option>
+            <option value="Asia/Jerusalem">Jerusalem</option>
+            <option value="Asia/Kabul">Kabul</option>
+            <option value="Asia/Kuwait">Kuwait</option>
+            <option value="Asia/Manila">Manila</option>
+            <option value="Asia/Tokyo">Tokyo</option>
+          </optgroup>
+          <optgroup label="Australia">
+            <option value="Australia/Brisbane">Brisbane</option>
+            <option value="Australia/Canberra">Canberra</option>
+            <option value="Australia/Melbourne">Melbourne</option>
+            <option value="Australia/Queensland">Queensland</option>
+            <option value="Australia/Sydney">Sydney</option>
+          </optgroup>
+          <optgroup label="Europe">
+            <option value="Europe/Athens">Athens</option>
+            <option value="Europe/Kiev">Kiev</option>
+            <option value="Europe/Paris">Paris</option>
+            <option value="Europe/Stockholm">Stockholm</option>
+          </optgroup>
+        </select>
 
+        <button
+          class="format-button"
+          id="hours-button"
+          aria-label="Toggle time format"
+        >
+          12-Hour Format
+        </button>
+      </div>
       <div class="flex-container">
         <div class="local-time-box" id="local-time">
-          <h2 class="local">Local Time</h2> 
-          <div class="clock">
+          <h2 class="local">Local Time</h2>
+          <div class="analog-clock">
             <div class="number" style="--n: 1"><b>1</b></div>
             <div class="number" style="--n: 2"><b>2</b></div>
             <div class="number" style="--n: 3"><b>3</b></div>
@@ -90,31 +96,18 @@
 
         <div class="city-list" id="cities">
           <div class="city-container" id="honolulu">
-            <div class="stack">
+            <div class="flex-city">
               <h2 class="city">Honolulu</h2>
-            </div>
-            <div class="stack">
               <div class="date"></div>
-              <div class="time">=</div>
             </div>
+            <div class="time">=</div>
           </div>
-          <div class="city-container" id="caracas">
-            <div class="stack">
-              <h2 class="city">Caracas</h2>
-            </div>
-            <div class="stack">
+          <div class="city-container" id="oslo">
+            <div class="flex-city">
+              <h2 class="city">Oslo</h2>
               <div class="date"></div>
-              <div class="time"></div>
             </div>
-          </div>
-          <div class="city-container" id="cairo">
-            <div class="stack">
-              <h2 class="city">Cairo</h2>
-            </div>
-            <div class="stack">
-              <div class="date"></div>
-              <div class="time"></div>
-            </div>
+            <div class="time">=</div>
           </div>
         </div>
       </div>

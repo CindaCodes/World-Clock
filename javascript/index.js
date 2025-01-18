@@ -1,3 +1,5 @@
+let is12HourFormat = false;
+
 const secondHand = document.querySelector(".second-hand");
 const minuteHand = document.querySelector(".minute-hand");
 const hourHand = document.querySelector(".hour-hand");
@@ -16,35 +18,7 @@ function rotateClockHand(element, rotation) {
   element.style.setProperty(`--rotate`, rotation * 360);
 }
 
-function updateTime() {
-  // Hawaii Time
-  let honoluluElement = document.querySelector("#honolulu");
-  let honoluluDateElement = honoluluElement.querySelector(".date");
-  let honoluluTimeElement = honoluluElement.querySelector(".time");
-  let honoluluTime = moment().tz("Pacific/Honolulu");
-
-  honoluluDateElement.innerHTML = honoluluTime.format("MMMM   Do YYYY");
-  honoluluTimeElement.innerHTML = honoluluTime.format("H:mm:ss");
-
-  // Caracas Time
-  let caracasElement = document.querySelector("#caracas");
-  let caracasDateElement = caracasElement.querySelector(".date");
-  let caracasTimeElement = caracasElement.querySelector(".time");
-  let caracasTime = moment().tz("America/Caracas");
-
-  caracasDateElement.innerHTML = caracasTime.format("MMMM Do YYYY");
-  caracasTimeElement.innerHTML = caracasTime.format("HH:mm:ss");
-
-  // Cairo Time
-  let cairoElement = document.querySelector("#cairo");
-  let cairoDateElement = cairoElement.querySelector(".date");
-  let cairoTimeElement = cairoElement.querySelector(".time");
-  let cairoTime = moment().tz("Africa/Cairo");
-
-  cairoDateElement.innerHTML = cairoTime.format("MMMM   Do YYYY");
-  cairoTimeElement.innerHTML = cairoTime.format("HH:mm:ss");
-}
-
+setInterval(clockTick, 1000);
 
 let citiesSelectElement = document.querySelector("#city-selector");
 citiesSelectElement.addEventListener("change", function (event) {
@@ -59,23 +33,70 @@ citiesSelectElement.addEventListener("change", function (event) {
     let cityName = cityTimeZone.replace("_", " ").split("/")[1];
     let citiesElement = document.querySelector("#cities");
     citiesElement.innerHTML = `
-    <div class="city-container">
-      <div class="stack">
-        <h2 class="city">${cityName}</h2>
+    <div class="dropdown-container">
+        <h2 class="dropdown-city">${cityName}</h2>
+        <div class="dropdown-date">${cityTime.format("ddd, MMM Do YYYY")}</div>
+      <div class="dropdown-time">${cityTime.format(
+        is12HourFormat
+          ? "h:mm:ss [<small>]A[</small>]"
+          : is12HourFormat
+          ? "h:mm:ss [<small>]A[</small>]"
+          : "HH:mm:ss"
+      )}
       </div>
-      <div class="stack">
-        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
-        <div class="time">${cityTime.format("HH:mm:ss")}</div>
-    </div>
+    
     </div>
         
-       <a href="/"><button>Go to Homepage</button></a>
+       <a href="/"><button class = "home-button">Go to Homepage</button></a>
        
   `;
   }
 });
 
-setInterval(clockTick, 1000);
+//button to switch between 12 and 24 hour format
+document.querySelector("#hours-button").addEventListener("click", function () {
+  is12HourFormat = !is12HourFormat;
+  this.textContent = is12HourFormat ? "24-Hour Format" : "12-Hour Format";
+
+  OsloClock();
+
+  const selectedCity = document.querySelector("#city").value;
+  if (selectedCity) {
+    updateCity({ target: { value: selectedCity } });
+  }
+});
+
+function updateTime() {
+  // Hawaii Time
+  let honoluluElement = document.querySelector("#honolulu");
+  let honoluluDateElement = honoluluElement.querySelector(".date");
+  let honoluluTimeElement = honoluluElement.querySelector(".time");
+  let honoluluTime = moment().tz("Pacific/Honolulu");
+
+  honoluluDateElement.innerHTML = honoluluTime.format("ddd, MMM Do YYYY");
+  honoluluTimeElement.innerHTML = honoluluTime.format(
+    is12HourFormat
+      ? "h:mm:ss [<small>]A[</small>]"
+      : is12HourFormat
+      ? "h:mm:ss [<small>]A[</small>]"
+      : "HH:mm:ss"
+  );
+
+  // Oslo Time
+  let osloElement = document.querySelector("#oslo");
+  let osloDateElement = osloElement.querySelector(".date");
+  let osloTimeElement = osloElement.querySelector(".time");
+  let osloTime = moment().tz("Europe/Oslo");
+
+  osloDateElement.innerHTML = osloTime.format("ddd, MMM Do YYYY");
+  osloTimeElement.innerHTML = osloTime.format(
+    is12HourFormat
+      ? "h:mm:ss [<small>]A[</small>]"
+      : is12HourFormat
+      ? "h:mm:ss [<small>]A[</small>]"
+      : "HH:mm:ss"
+  );
+}
 
 updateTime();
 setInterval(updateTime, 1000);

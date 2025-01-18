@@ -12,27 +12,13 @@ h1 {
   color: #235784;
   font-size: 100px;
   font-weight: bolder;
-  margin: 0 0 20px 0;
+  margin: 0;
   text-align: center;
   text-shadow: 0 0 1em #f7aa00, 0 0 0.2em #f7aa00;
 }
 
-select {
-  background-color: #40a8c4;
-  border-radius: 4px;
-  border: 2px solid #f7aa00;
-  display: block;
-  font-size: 18px;
-  margin: 0 10px;
-  padding: 10px 0;
-  width: 96.5%;
-}
-
-optgroup {
-  color: #f7aa00;
-}
-
 .container {
+  align-items: center;
   background-color: #bcdbdf;
   border-radius: 10px;
   box-shadow: 0 0 20px #f7aa00, 0 0 20px #f7aa00;
@@ -41,33 +27,74 @@ optgroup {
   font-weight: 400;
   margin: 0 auto;
   margin: 40px auto;
-  max-width: 650px;
+  max-width: 625px;
   opacity: 95%;
   padding: 20px;
-  align-items: center;
+}
+
+/*Drop Down*/
+.selection-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+select {
+  background-color: #40a8c4;
+  border-radius: 8px;
+  border: 2px solid #f7aa00;
+  font-family: "Iceland";
+  font-size: 20px;
+  margin: 10px;
+  padding: 10px;
+  width: 65%;
+}
+
+optgroup {
+  color: #f7aa00;
+}
+
+/* 12/24 hr Button*/
+.format-button {
+  background-color: #40a8c4;
+  border-radius: 8px;
+  border: 2px solid #f7aa00;
+  color: #235784;
+  cursor: pointer;
+  font-family: "Iceland";
+  font-size: 20px;
+  font-weight: bolder;
+  height: 44px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px 20px;
+}
+.format-button:hover {
+  background-color: #235784;
+  color: #f7aa00;
+  font-size: 22px;
 }
 
 .local-time-box {
   background-color: #f7aa00;
   border-radius: 10px;
   color: #235784;
-  text-align: center;
-  padding: 0 10px;
-  max-height: 300px;
   margin: 14px 0 0 10px;
+  padding: 0 10px;
+  text-align: center;
+  width: 220px;
 }
 
 .local {
   color: #235784;
   display: block;
-  padding: 0;
-  margin: 15px 0;
-  text-align: center;
   font-size: 35px;
+  margin: 10px 0;
+  padding: 0;
+  text-align: center;
 }
 
-/* Clock */
-.clock {
+/* Analog Clock */
+.analog-clock {
   align-items: center;
   background: radial-gradient(
     circle,
@@ -75,6 +102,7 @@ optgroup {
     rgba(35, 87, 132, 1) 100%
   );
   border-radius: 50%;
+  box-shadow: 0 0 20px #bcdbdf, 0 0 20px #bcdbdf;
   display: flex;
   height: 200px;
   justify-content: center;
@@ -82,15 +110,14 @@ optgroup {
   position: relative;
   text-align: center;
   width: 200px;
-  box-shadow: 0 0 20px #bcdbdf, 0 0 20px #bcdbdf;
 }
 
 .number {
+  color: #f7aa00;
   font-size: 17px;
   inset: 5px;
   position: absolute;
   text-align: center;
-  color: #f7aa00;
   transform: rotate(calc(30deg * var(--n)));
 }
 
@@ -125,7 +152,7 @@ optgroup {
 }
 .minute-hand {
   background-color: #bcdbdf;
-  height: 80px;
+  height: 70px;
   width: 2px;
 }
 .second-hand {
@@ -139,79 +166,99 @@ optgroup {
   justify-content: space-between;
   margin: 0;
   padding: 0;
-  max-height: 420px;
 }
 
 .city-container {
   background-color: #f7aa00;
   border-radius: 10px;
   color: #235784;
-  margin: 14px 14px 0 0;
+  height: 120px;
+  margin: 14px 10px 0 0;
   padding: 10px 10px 0 10px;
-  display: flex;
-  justify-content: space-between;
-  width: 370px;
+  width: 330px;
 }
 
+.flex-city {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px 0 10px;
+}
 .city {
   font-size: 30px;
   margin: 0;
-  padding: 15px 0;
+  padding: 0;
 }
 
 .time-zone {
   text-align: left;
 }
 
-.date,
 .time {
-  text-align: right;
+  font-size: 55px;
+  text-align: center;
 }
 .date {
-  font-size: 20px;
+  font-size: 25px;
   opacity: 0.7;
   padding-bottom: 10px;
 }
 
-/* Time */
-.time,
-.local-time {
-  font-size: 48px;
-  font-weight: bold;
+/*dropdown selection */
+
+.dropdown-container {
+  background-color: #f7aa00;
+  border-radius: 10px;
+  color: #235784;
+  height: 150px;
+  margin: 14px 10px 0 0;
+  padding: 10px 10px 0 10px;
+  text-align: center;
+  width: 320px;
+}
+.dropdown-time {
+  font-size: 65px;
+  text-align: center;
 }
 
-.time small {
-  font-size: 24px;
-  line-height: 48px;
-  vertical-align: middle;
+.dropdown-date {
+  font-size: 25px;
+  opacity: 0.7;
+  padding-bottom: 10px;
 }
 
-button {
-  display: block;
-  font-size: 20px;
-  margin: 75px auto;
-  padding: 10px 20px;
+.dropdown-city {
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+/*Home Button*/
+.home-button {
   background-color: #40a8c4;
-  box-shadow: 0 0 20px #f7aa00, 0 0 20px #f7aa00;
   border-radius: 8px;
+  border: 2px solid #f7aa00;
   color: #235784;
   cursor: pointer;
-  border: none;
+  display: block;
   font-family: "Iceland";
+  font-size: 20px;
   font-weight: bolder;
+  margin: 35px auto;
+  padding: 10px 20px;
 }
-button:hover {
+.home-button:hover {
   background-color: #235784;
   color: #f7aa00;
   font-size: 22px;
 }
+
 /* Footer */
 
 footer {
   color: #40a8c4;
-  text-align: center;
-  margin: 10px 0 0 0;
   font-size: 15px;
+  margin: 10px 0 0 0;
+  text-align: center;
 }
 
 a:-webkit-any-link {
