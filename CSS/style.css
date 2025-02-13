@@ -304,7 +304,6 @@ a:-webkit-any-link:hover {
 
   .selection-flex {
     flex-direction: column;
-    max-width: 95%;
     margin: 3% auto;
   }
 
@@ -316,7 +315,7 @@ a:-webkit-any-link:hover {
   }
 
   .local-time-box {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
   }
 
@@ -326,7 +325,7 @@ a:-webkit-any-link:hover {
 
   .city-container, .dropdown-container {
     margin: 3% auto;
-    max-width: 90%;
+    width: 95%;
     height: fit-content;
   }
 }
