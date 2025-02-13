@@ -272,3 +272,6 @@ a:-webkit-any-link:hover {
   color: #235784;
   font-size: 17px;
 }
+
+@media screen and (max-width: 768px) {
+}
