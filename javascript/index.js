@@ -111,8 +111,6 @@ function updateTime() {
       ? "h:mm:ss [<small>]A[</small>]"
       : "HH:mm:ss"
   );
-
-
 }
 
 updateTime();
