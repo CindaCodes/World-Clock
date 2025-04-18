@@ -24,32 +24,39 @@ let citiesSelectElement = document.querySelector("#city-selector");
 citiesSelectElement.addEventListener("change", function (event) {
   setInterval(updateCity, 1000);
 
-  function updateCity() {
+  function updateCity(event) {
     let cityTimeZone = citiesSelectElement.value;
     if (cityTimeZone === "current") {
       cityTimeZone = moment.tz.guess();
     }
+
+    // Check if timezone is valid
+    if (!moment.tz.zone(cityTimeZone)) {
+      console.error(`Invalid timezone: ${cityTimeZone}`);
+      return false;
+    }
+
     let cityTime = moment().tz(cityTimeZone);
-    let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+    let cityName = cityTimeZone.replace("_", " ").split("/")[1] || cityTimeZone;
     let citiesElement = document.querySelector("#cities");
+
+    if (!citiesElement) {
+      console.error("Cities element not found");
+      return false;
+    }
+
     citiesElement.innerHTML = `
     <div class="dropdown-container">
-        <h2 class="dropdown-city">${cityName}</h2>
-        <div class="dropdown-date">${cityTime.format("ddd, MMM Do YYYY")}</div>
+      <h2 class="dropdown-city">${cityName}</h2>
+      <div class="dropdown-date">${cityTime.format("ddd, MMM Do YYYY")}</div>
       <div class="dropdown-time">${cityTime.format(
-        is12HourFormat
-          ? "h:mm:ss [<small>]A[</small>]"
-          : is12HourFormat
-          ? "h:mm:ss [<small>]A[</small>]"
-          : "HH:mm:ss"
-      )}
-      </div>
-    
+        is12HourFormat ? "h:mm:ss [<small>]A[</small>]" : "HH:mm:ss"
+      )}</div>
     </div>
-        
-       <a href="/"><button class = "home-button">Go to Homepage</button></a>
-       
+    <a href="/"><button class="home-button">Go to Homepage</button></a>
   `;
+
+    return true;
   }
 });
 
@@ -58,7 +65,7 @@ document.querySelector("#hours-button").addEventListener("click", function () {
   is12HourFormat = !is12HourFormat;
   this.textContent = is12HourFormat ? "24-Hour Format" : "12-Hour Format";
 
-  OsloClock();
+  updateTime();
 
   const selectedCity = document.querySelector("#city").value;
   if (selectedCity) {
@@ -69,48 +76,45 @@ document.querySelector("#hours-button").addEventListener("click", function () {
 function updateTime() {
   // Hawaii Time
   let honoluluElement = document.querySelector("#honolulu");
-  let honoluluDateElement = honoluluElement.querySelector(".date");
-  let honoluluTimeElement = honoluluElement.querySelector(".time");
-  let honoluluTime = moment().tz("Pacific/Honolulu");
-
-  honoluluDateElement.innerHTML = honoluluTime.format("ddd, MMM Do YYYY");
-  honoluluTimeElement.innerHTML = honoluluTime.format(
-    is12HourFormat
-      ? "h:mm:ss [<small>]A[</small>]"
-      : is12HourFormat
-      ? "h:mm:ss [<small>]A[</small>]"
-      : "HH:mm:ss"
-  );
+  if (honoluluElement) {
+    let honoluluDateElement = honoluluElement.querySelector(".date");
+    let honoluluTimeElement = honoluluElement.querySelector(".time");
+    if (honoluluDateElement && honoluluTimeElement) {
+      let honoluluTime = moment().tz("Pacific/Honolulu");
+      honoluluDateElement.innerHTML = honoluluTime.format("ddd, MMM Do YYYY");
+      honoluluTimeElement.innerHTML = honoluluTime.format(
+        is12HourFormat ? "h:mm:ss [<small>]A[</small>]" : "HH:mm:ss"
+      );
+    }
+  }
 
   // Oslo Time
   let osloElement = document.querySelector("#oslo");
-  let osloDateElement = osloElement.querySelector(".date");
-  let osloTimeElement = osloElement.querySelector(".time");
-  let osloTime = moment().tz("Europe/Oslo");
-
-  osloDateElement.innerHTML = osloTime.format("ddd, MMM Do YYYY");
-  osloTimeElement.innerHTML = osloTime.format(
-    is12HourFormat
-      ? "h:mm:ss [<small>]A[</small>]"
-      : is12HourFormat
-      ? "h:mm:ss [<small>]A[</small>]"
-      : "HH:mm:ss"
-  );
+  if (osloElement) {
+    let osloDateElement = osloElement.querySelector(".date");
+    let osloTimeElement = osloElement.querySelector(".time");
+    if (osloDateElement && osloTimeElement) {
+      let osloTime = moment().tz("Europe/Oslo");
+      osloDateElement.innerHTML = osloTime.format("ddd, MMM Do YYYY");
+      osloTimeElement.innerHTML = osloTime.format(
+        is12HourFormat ? "h:mm:ss [<small>]A[</small>]" : "HH:mm:ss"
+      );
+    }
+  }
 
   // Hong Kong Time
   let hongKongElement = document.querySelector("#hongKong");
-  let hongKongDateElement = hongKongElement.querySelector(".date");
-  let hongKongTimeElement = hongKongElement.querySelector(".time");
-  let hongKongTime = moment().tz("Asia/Hong_Kong");
-
-  hongKongDateElement.innerHTML = hongKongTime.format("ddd, MMM Do YYYY");
-  hongKongTimeElement.innerHTML = hongKongTime.format(
-    is12HourFormat
-      ? "h:mm:ss [<small>]A[</small>]"
-      : is12HourFormat
-      ? "h:mm:ss [<small>]A[</small>]"
-      : "HH:mm:ss"
-  );
+  if (hongKongElement) {
+    let hongKongDateElement = hongKongElement.querySelector(".date");
+    let hongKongTimeElement = hongKongElement.querySelector(".time");
+    if (hongKongDateElement && hongKongTimeElement) {
+      let hongKongTime = moment().tz("Asia/Hong_Kong");
+      hongKongDateElement.innerHTML = hongKongTime.format("ddd, MMM Do YYYY");
+      hongKongTimeElement.innerHTML = hongKongTime.format(
+        is12HourFormat ? "h:mm:ss [<small>]A[</small>]" : "HH:mm:ss"
+      );
+    }
+  }
 }
 
 updateTime();
